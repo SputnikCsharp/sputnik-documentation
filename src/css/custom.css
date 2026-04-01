@@ -1,30 +1,291 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* ── Paleta Sputnik ── */
+  --ifm-color-primary: #4a6adf;
+  --ifm-color-primary-dark: #3a56c4;
+  --ifm-color-primary-darker: #2f47b0;
+  --ifm-color-primary-darkest: #1e2e80;
+  --ifm-color-primary-light: #6a85e8;
+  --ifm-color-primary-lighter: #7aadff;
+  --ifm-color-primary-lightest: #c8d8ff;
+
+  /* ── Tipografía ── */
+  --ifm-font-family-base: 'Space Grotesk', sans-serif;
+  --ifm-font-family-monospace: 'Space Mono', monospace;
+  --ifm-font-size-base: 14px;
+
+  /* ── Fondos oscuros ── */
+  --ifm-background-color: #08090f;
+  --ifm-background-surface-color: #0e1018;
+  --ifm-navbar-background-color: rgba(8, 9, 15, 0.95);
+
+  /* ── Texto ── */
+  --ifm-font-color-base: #e8e8f0;
+  --ifm-font-color-secondary: rgba(200, 216, 255, 0.55);
+
+  /* ── Navbar ── */
+  --ifm-navbar-link-color: rgba(200, 216, 255, 0.55);
+  --ifm-navbar-link-hover-color: #c8d8ff;
+
+  /* ── Sidebar ── */
+  --ifm-menu-color: rgba(200, 216, 255, 0.5);
+  --ifm-menu-color-active: #7aadff;
+  --ifm-menu-link-sublist-icon-filter: invert(1);
+
+  /* ── TOC derecha ── */
+  --ifm-toc-link-color: rgba(200, 216, 255, 0.4);
+  --ifm-toc-border-color: rgba(255, 255, 255, 0.06);
+
+  /* ── Bordes y separadores ── */
+  --ifm-hr-border-color: rgba(255, 255, 255, 0.07);
+  --ifm-color-emphasis-300: rgba(255, 255, 255, 0.1);
+
+  /* ── Código ── */
+  --ifm-code-background: rgba(74, 106, 223, 0.15);
+  --ifm-code-color: #7aadff;
+  --ifm-pre-background: rgba(0, 0, 0, 0.4);
+  --ifm-pre-border-radius: 8px;
+  --docusaurus-highlighted-code-line-bg: rgba(74, 106, 223, 0.15);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Mismo esquema en dark mode explícito */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-background-color: #08090f;
+  --ifm-background-surface-color: #0e1018;
+  --ifm-font-color-base: #e8e8f0;
+}
+
+/* ── Navbar ── */
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.navbar__title {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #c8d8ff;
+}
+
+/* ── Sidebar activo ── */
+.menu__link--active {
+  border-left: 2px solid #4a6adf;
+  border-radius: 0 6px 6px 0 !important;
+  padding-left: 6px !important;
+  color: #7aadff !important;
+  background: rgba(74, 106, 223, 0.18) !important;
+}
+
+/* ── Headings del contenido ── */
+article h1 { color: #e8e8f0; }
+article h2 {
+  color: #c8d8ff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0.4rem;
+}
+article h3 { color: #a8bcf0; }
+article p  { color: rgba(200, 216, 255, 0.65); line-height: 1.75; }
+
+/* ── Bloques de código ── */
+.prism-code {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.token.keyword  { color: #7aadff; }
+.token.string   { color: #ff9f7a; }
+.token.comment  { color: rgba(200, 216, 255, 0.3); }
+.token.function { color: #c8d8ff; }
+.token.number   { color: #a0d8a0; }
+.token.operator { color: #ff9f7a; }
+.token.punctuation { color: rgba(200, 216, 255, 0.5); }
+
+/* ── Callouts / Admonitions ── */
+.alert {
+  border-radius: 0 8px 8px 0;
+  border-left-width: 2px;
+  border-left-style: solid;
+}
+.alert--info    { border-left-color: #4a6adf; background: rgba(74, 106, 223, 0.08); color: rgba(200,216,255,0.75); }
+.alert--tip     { border-left-color: #1D9E75; background: rgba(29, 158, 117, 0.08); color: rgba(200,216,255,0.75); }
+.alert--warning { border-left-color: #EF9F27; background: rgba(239, 159, 39, 0.08); color: rgba(200,216,255,0.75); }
+.alert--danger  { border-left-color: #E24B4A; background: rgba(226, 75, 74, 0.08);  color: rgba(200,216,255,0.75); }
+
+/* ── TOC ── */
+.table-of-contents__link { font-size: 12px; }
+.table-of-contents__link--active { color: #7aadff; font-weight: 500; }
+
+/* ── Footer ── */
+.footer {
+  background: #05060b;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.footer__title {
+  color: #c8d8ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.footer__link-item       { color: rgba(200, 216, 255, 0.45); font-size: 13px; }
+.footer__link-item:hover { color: #c8d8ff; }
+.footer__copyright {
+  color: rgba(200, 216, 255, 0.25);
+  font-size: 12px;
+  font-family: 'Space Mono', monospace;
+}
+
+/* ── Estrellas de fondo ── */
+#__docusaurus {
+  background-image:
+    radial-gradient(2px 2px at 5%  10%, rgba(255,255,255,0.90) 0%, transparent 100%),
+    radial-gradient(2px 2px at 15% 3%,  rgba(255,255,255,0.80) 0%, transparent 100%),
+    radial-gradient(3px 3px at 25% 15%, rgba(255,255,255,0.90) 0%, transparent 100%),
+    radial-gradient(2px 2px at 35% 7%,  rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(2px 2px at 45% 20%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(3px 3px at 55% 5%,  rgba(255,255,255,0.80) 0%, transparent 100%),
+    radial-gradient(2px 2px at 65% 18%, rgba(255,255,255,0.70) 0%, transparent 100%),
+    radial-gradient(2px 2px at 75% 8%,  rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(3px 3px at 85% 22%, rgba(255,255,255,0.90) 0%, transparent 100%),
+    radial-gradient(2px 2px at 95% 12%, rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(2px 2px at 8%  35%, rgba(255,255,255,0.70) 0%, transparent 100%),
+    radial-gradient(2px 2px at 20% 42%, rgba(255,255,255,0.80) 0%, transparent 100%),
+    radial-gradient(3px 3px at 32% 30%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(2px 2px at 48% 38%, rgba(255,255,255,0.70) 0%, transparent 100%),
+    radial-gradient(2px 2px at 58% 45%, rgba(255,255,255,0.80) 0%, transparent 100%),
+    radial-gradient(3px 3px at 72% 33%, rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(2px 2px at 88% 40%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(2px 2px at 12% 55%, rgba(255,255,255,0.70) 0%, transparent 100%),
+    radial-gradient(2px 2px at 28% 62%, rgba(255,255,255,0.80) 0%, transparent 100%),
+    radial-gradient(3px 3px at 42% 58%, rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(2px 2px at 62% 68%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(2px 2px at 78% 55%, rgba(255,255,255,0.70) 0%, transparent 100%),
+    radial-gradient(3px 3px at 92% 62%, rgba(255,255,255,0.80) 0%, transparent 100%),
+    radial-gradient(2px 2px at 18% 75%, rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(2px 2px at 38% 82%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(3px 3px at 52% 78%, rgba(255,255,255,0.70) 0%, transparent 100%),
+    radial-gradient(2px 2px at 68% 88%, rgba(255,255,255,0.80) 0%, transparent 100%),
+    radial-gradient(2px 2px at 82% 75%, rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(3px 3px at 96% 85%, rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(2px 2px at 6%  92%, rgba(255,255,255,0.70) 0%, transparent 100%);
+  background-attachment: fixed;
+}
+
+
+/* ── Scrollbar personalizado ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #08090f;
+}
+::-webkit-scrollbar-thumb {
+  background: #4a6adf;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7aadff;
+}
+
+/* ── Selección de texto ── */
+::selection {
+  background: rgba(74, 106, 223, 0.4);
+  color: #e8e8f0;
+}
+
+/* ── Links con animación de señal ── */
+article a {
+  color: #7aadff;
+  text-decoration: none;
+  background-image: linear-gradient(#4a6adf, #4a6adf);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.3s ease;
+}
+article a:hover {
+  color: #c8d8ff;
+  background-size: 100% 1px;
+}
+
+/* ── Órbita en la navbar ── */
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(74,106,223,0.0) 10%,
+    rgba(74,106,223,0.6) 30%,
+    rgba(122,173,255,0.9) 50%,
+    rgba(74,106,223,0.6) 70%,
+    rgba(74,106,223,0.0) 90%,
+    transparent 100%
+  );
+}
+
+.navbar {
+  position: relative;
+  overflow: visible;
+}
+
+/* ── Separadores tipo órbita ── */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(74,106,223,0.0) 5%,
+    rgba(74,106,223,0.5) 30%,
+    rgba(122,173,255,0.8) 50%,
+    rgba(74,106,223,0.5) 70%,
+    rgba(74,106,223,0.0) 95%,
+    transparent 100%
+  );
+  margin: 1.5rem 0;
+}
+
+/* ── Badge señal activa ── */
+.navbar__items--right::before {
+  content: '● SEÑAL ACTIVA';
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: #1D9E75;
+  animation: signal-pulse 2s ease-in-out infinite;
+  margin-right: 1rem;
+}
+
+@keyframes signal-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ── Animación separador órbita ── */
+@keyframes orbit-travel {
+  0%   { left: 0%;   top: 0px; }
+  25%  { left: 50%;  top: -8px; }
+  50%  { left: 100%; top: 0px; }
+  75%  { left: 50%;  top: 8px; }
+  100% { left: 0%;   top: 0px; }
+}
+
+.orbit-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7aadff;
+  animation: orbit-travel 6s linear infinite;
+  top: 50%;
+  transform: translateY(-50%);
 }

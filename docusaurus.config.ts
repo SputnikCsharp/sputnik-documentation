@@ -72,14 +72,12 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
-      respectPrefersColorScheme: true,
+      respectPrefersColorScheme: false,
+      defaultMode: 'dark',
+      disableSwitch: false,
     },
     navbar: {
-      title: 'My Site',
-      logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
-      },
+      title: 'My Sputnik',
       items: [
         {
           type: 'docSidebar',
